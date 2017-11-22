@@ -52,7 +52,7 @@ func main() {
 		// The agent info is not actually agents but info to create agents
 		for i := 0; i < info.Count; i++ {
 			sim.AddAgent(&Agent{
-				name:        strconv.Itoa(1000*groupnum + i),
+				name:        strconv.Itoa(1000*(groupnum+1) + i),
 				start:       info.Start,
 				destination: info.Destination,
 				leaveTime:   rand.Intn(info.MaxLeaveTime)})
