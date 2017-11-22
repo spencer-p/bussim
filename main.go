@@ -8,6 +8,7 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
+	"time"
 )
 
 func main() {
@@ -58,7 +59,9 @@ func main() {
 		}
 	}
 
+	start := time.Now()
 	sim.Simulate()
+	log.Println("Finished simulation in", time.Since(start))
 
 	// Open output to write
 	output, err := os.Create(*outputFileName)
