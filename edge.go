@@ -28,9 +28,10 @@ func (e *Edge) Weight() float64 {
 }
 
 func (e *Edge) Time() int {
-	// Base speed is speed * distance, divided by # of vehicles
+	// Base speed is distance/speed, divided by # of vehicles
+	// Speed has to be reduced to minutes (div by 60)
 	// Extra speed is # of extra people times the base time
-	base := (e.Speed * e.Distance) / e.VehicleCount
+	base := (e.Distance / (e.Speed / 60)) / e.VehicleCount
 	var extra float64
 	if e.Waiting > e.Capacity*e.VehicleCount {
 		extra = (e.Waiting - e.Capacity*e.VehicleCount) * base
