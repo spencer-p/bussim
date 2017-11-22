@@ -1,0 +1,38 @@
+{
+	"routeinfo": [
+		{
+			"ToStop": "Cowell",
+			"FromStop": "Porter",
+			"Distance": 3.1,
+			"Capacity": 10,
+			"Speed": 30
+		},
+		{
+			"ToStop": "Downtown",
+			"FromStop": "Cowell",
+			"Distance": 30.5,
+			"Capacity": 100,
+			"Speed": 45
+		}
+	],
+	"agentinfo": [
+		{
+			"Count": 60,
+			"Destination": "Downtown",
+			"Start": "Porter",
+			"MaxLeaveTime": 30
+		},
+		{
+			"Count": 10,
+			"Destination": "Downtown",
+			"Start": "Cowell",
+			"MaxLeaveTime": 10
+		},
+		{
+			"Count": 10,
+			"Destination": "Cowell",
+			"Start": "Porter",
+			"MaxLeaveTime": 60
+		}
+	]
+}
