@@ -10,6 +10,7 @@ type Edge struct {
 	Capacity         float64
 	Speed            float64
 	Waiting          float64
+	VehicleCount     float64
 }
 
 func (e *Edge) To() string {
@@ -22,14 +23,14 @@ func (e *Edge) From() string {
 
 func (e *Edge) Weight() float64 {
 	// The weight is directly related to # of waiting and distance and inversely
-	// related to the capacity and bus speed
-	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed)
+	// related to the capacity, number of buses, and bus speed
+	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
 }
 
 func (e *Edge) Time() int {
 	// Base speed is speed * distance
 	// Extra speed is bus capacity divided by waiting times the base speed
-	base := e.Speed * e.Distance
+	base := (e.Speed * e.Distance) / e.VehicleCount
 	var extra float64
 	if e.Waiting > e.Capacity {
 		extra = (e.Capacity / e.Waiting) * base
