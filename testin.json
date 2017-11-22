@@ -3,7 +3,7 @@
 		{
 			"ToStop": "Cowell",
 			"FromStop": "Porter",
-			"Distance": 3.1,
+			"Distance": 1.5,
 			"Capacity": 10,
 			"Speed": 30,
 			"VehicleCount": 1
@@ -11,10 +11,10 @@
 		{
 			"ToStop": "Downtown",
 			"FromStop": "Cowell",
-			"Distance": 30.5,
-			"Capacity": 100,
+			"Distance": 10,
+			"Capacity": 10,
 			"Speed": 45,
-			"VehicleCount": 100
+			"VehicleCount": 2
 		}
 	],
 	"agentinfo": [
@@ -28,7 +28,7 @@
 			"Count": 10,
 			"Destination": "Downtown",
 			"Start": "Cowell",
-			"MaxLeaveTime": 10
+			"MaxLeaveTime": 1
 		},
 		{
 			"Count": 10,
