@@ -1,5 +1,5 @@
 {
-	"routeinfo": [
+	"busrouteinfo": [
 		{
 			"ToStop": "Cowell",
 			"FromStop": "Porter",
@@ -15,6 +15,15 @@
 			"Capacity": 10,
 			"Speed": 45,
 			"VehicleCount": 2
+		}
+	],
+	"carrouteinfo": [
+		{
+			"FromIntersection": "Porter",
+			"ToIntersection": "Downtown",
+			"SpeedLimit": 40,
+			"Distance": 10,
+			"LaneCount": 3
 		}
 	],
 	"agentinfo": [

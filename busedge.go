@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-type Edge struct {
+type BusEdge struct {
 	ToStop, FromStop string
 	Distance         float64
 	Capacity         float64
@@ -13,21 +13,21 @@ type Edge struct {
 	VehicleCount     float64
 }
 
-func (e *Edge) To() string {
+func (e *BusEdge) To() string {
 	return e.ToStop
 }
 
-func (e *Edge) From() string {
+func (e *BusEdge) From() string {
 	return e.FromStop
 }
 
-func (e *Edge) Weight() float64 {
+func (e *BusEdge) Weight() float64 {
 	// The weight is directly related to # of waiting and distance and inversely
 	// related to the capacity, number of buses, and bus speed
 	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
 }
 
-func (e *Edge) Time() int {
+func (e *BusEdge) Time() int {
 	// Base speed is distance/speed, divided by # of vehicles
 	// Speed has to be reduced to minutes (div by 60)
 	// Extra speed is # of extra people times the base time
@@ -41,10 +41,10 @@ func (e *Edge) Time() int {
 	return int(base + extra)
 }
 
-func (e *Edge) RemoveAgent() {
+func (e *BusEdge) RemoveAgent() {
 	e.Waiting = math.Max(0, e.Waiting-1)
 }
 
-func (e *Edge) AddAgent() {
+func (e *BusEdge) AddAgent() {
 	e.Waiting++
 }

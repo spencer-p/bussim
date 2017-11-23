@@ -43,7 +43,14 @@ func main() {
 
 	sim := traffic.NewSimulation()
 
-	for _, e := range data.RouteInfo {
+	// Add bus routes
+	for _, e := range data.BusRouteInfo {
+		e := e // New reference
+		sim.AddEdge(&e)
+	}
+
+	// Add car routes
+	for _, e := range data.CarRouteInfo {
 		e := e // New reference
 		sim.AddEdge(&e)
 	}
