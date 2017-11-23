@@ -37,7 +37,7 @@ func (e *CarEdge) Time() int {
 
 	if actualCapacityPerc <= roadCapacityPerc {
 		// If the cars have not exceeded capacity, travel at speed limit
-		return int(e.Distance / e.SpeedLimit)
+		return int(e.Distance / (e.SpeedLimit / 60))
 	} else if actualCapacityPerc > 1 {
 		// If they have exceeded 100% road space:
 		// Road is at more than capacity! Speed limit is 1
@@ -51,7 +51,7 @@ func (e *CarEdge) Time() int {
 		lostSpeedFn := quadGenerator(1-roadCapacityPerc, e.SpeedLimit-1)
 
 		// The speed is calculated as speed limit - lost speed
-		return int(e.Distance / (e.SpeedLimit - lostSpeedFn(actualCapacityPerc-roadCapacityPerc)))
+		return int(e.Distance / ((e.SpeedLimit - lostSpeedFn(actualCapacityPerc-roadCapacityPerc)) / 60))
 	}
 }
 
