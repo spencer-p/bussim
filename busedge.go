@@ -27,7 +27,7 @@ func (e *BusEdge) Weight() float64 {
 	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
 }
 
-func (e *Edge) Time() int {
+func (e *BusEdge) Time() int {
 	// Base speed is distance/speed - number of vehicles cannot lower this
 	// Speed has to be reduced to minutes (div by 60)
 	// Extra speed is # of extra people times the base time
