@@ -66,9 +66,15 @@ func main() {
 		}
 	}
 
+	// Run the simulation, timing it and checking for errors
 	start := time.Now()
-	sim.Simulate()
-	log.Println("Finished simulation in", time.Since(start))
+	err = sim.Simulate()
+	elapsed := time.Since(start)
+	if err != nil {
+		log.Println("Simulation encountered error after", elapsed)
+		log.Fatal(err)
+	}
+	log.Println("Finished simulation in", elapsed)
 
 	// Open output to write
 	output, err := os.Create(*outputFileName)
