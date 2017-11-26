@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/spencer-p/traffic"
 	"math"
 )
 
@@ -21,7 +22,7 @@ func (e *CarEdge) From() string {
 	return e.FromIntersection
 }
 
-func (e *CarEdge) Weight() float64 {
+func (e *CarEdge) Weight(_ traffic.Agent) float64 {
 	// Directly related to car count and distance
 	// Inversely related to lane count and speed
 	return (e.Distance * (e.CarCount + 1)) / (e.SpeedLimit * e.LaneCount)

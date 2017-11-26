@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/spencer-p/traffic"
 	"math"
 )
 
@@ -21,7 +22,7 @@ func (e *BusEdge) From() string {
 	return e.FromStop
 }
 
-func (e *BusEdge) Weight() float64 {
+func (e *BusEdge) Weight(_ traffic.Agent) float64 {
 	// The weight is directly related to # of waiting and distance and inversely
 	// related to the capacity, number of buses, and bus speed
 	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
