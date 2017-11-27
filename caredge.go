@@ -12,6 +12,7 @@ type CarEdge struct {
 	ToIntersection, FromIntersection string
 	SpeedLimit, Distance             float64
 	LaneCount, CarCount              float64
+	EnvironmentalCost, Cost          float64
 }
 
 func (e *CarEdge) To() string {
@@ -22,10 +23,19 @@ func (e *CarEdge) From() string {
 	return e.FromIntersection
 }
 
-func (e *CarEdge) Weight(_ traffic.Agent) float64 {
+func (e *CarEdge) Weight(ta traffic.Agent) float64 {
+	a, ok := ta.(*Agent)
+	if !ok {
+		// This should never happen
+		return math.Inf(0)
+	}
+
 	// Directly related to car count and distance
 	// Inversely related to lane count and speed
-	return (e.Distance * (e.CarCount + 1)) / (e.SpeedLimit * e.LaneCount)
+	timeCost := (e.Distance * (e.CarCount + 1)) / (e.SpeedLimit * e.LaneCount)
+
+	// Weigh everything together
+	return a.timeWeight*timeCost + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
 }
 
 func (e *CarEdge) Time() int {

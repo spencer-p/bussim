@@ -6,12 +6,14 @@ import (
 )
 
 type BusEdge struct {
-	ToStop, FromStop string
-	Distance         float64
-	Capacity         float64
-	Speed            float64
-	Waiting          float64
-	VehicleCount     float64
+	ToStop, FromStop  string
+	Distance          float64
+	Capacity          float64
+	Speed             float64
+	Waiting           float64
+	VehicleCount      float64
+	EnvironmentalCost float64
+	Cost              float64
 }
 
 func (e *BusEdge) To() string {
@@ -22,10 +24,20 @@ func (e *BusEdge) From() string {
 	return e.FromStop
 }
 
-func (e *BusEdge) Weight(_ traffic.Agent) float64 {
-	// The weight is directly related to # of waiting and distance and inversely
-	// related to the capacity, number of buses, and bus speed
-	return (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
+func (e *BusEdge) Weight(ta traffic.Agent) float64 {
+	a, ok := ta.(*Agent)
+	if !ok {
+		// This should never happen
+		return math.Inf(0)
+	}
+
+	// The time weight is directly related to # of waiting and distance and
+	// inversely related to the capacity, number of buses, and bus speed
+	timeCost := (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
+
+	// Weight each item together
+	// TODO does this make sense?
+	return a.timeWeight*timeCost + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
 }
 
 func (e *BusEdge) Time() int {

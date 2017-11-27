@@ -62,7 +62,11 @@ func main() {
 				name:        strconv.Itoa(1000*(groupnum+1) + i),
 				start:       info.Start,
 				destination: info.Destination,
-				leaveTime:   rand.Intn(info.MaxLeaveTime)})
+				leaveTime:   rand.Intn(info.MaxLeaveTime),
+				timeWeight:  float64(info.TimeWeightRange[0] + rand.Intn(info.TimeWeightRange[1]+1)),
+				envWeight:   float64(info.EnvironmentalWeightRange[0] + rand.Intn(info.EnvironmentalWeightRange[1]+1)),
+				econWeight:  float64(info.CostWeightRange[0] + rand.Intn(info.CostWeightRange[1]+1)),
+			})
 		}
 	}
 

@@ -6,7 +6,9 @@
 			"Distance": 1.5,
 			"Capacity": 10,
 			"Speed": 30,
-			"VehicleCount": 1
+			"VehicleCount": 1,
+			"EnvironmentalCost": 1,
+			"Cost": 7
 		},
 		{
 			"ToStop": "Downtown",
@@ -14,7 +16,9 @@
 			"Distance": 10,
 			"Capacity": 10,
 			"Speed": 45,
-			"VehicleCount": 2
+			"VehicleCount": 2,
+			"EnvironmentalCost": 2,
+			"Cost": 10
 		}
 	],
 	"carrouteinfo": [
@@ -23,7 +27,9 @@
 			"ToIntersection": "Downtown",
 			"SpeedLimit": 40,
 			"Distance": 10,
-			"LaneCount": 3
+			"LaneCount": 3,
+			"EnvironmentalCost": 20,
+			"Cost": 10
 		}
 	],
 	"agentinfo": [
@@ -31,19 +37,28 @@
 			"Count": 60,
 			"Destination": "Downtown",
 			"Start": "Porter",
-			"MaxLeaveTime": 30
+			"MaxLeaveTime": 30,
+			"EnvironmentalWeightRange": [1, 10],
+			"TimeWeightRange": [1, 5],
+			"CostWeightRange": [5, 10]
 		},
 		{
 			"Count": 10,
 			"Destination": "Downtown",
 			"Start": "Cowell",
-			"MaxLeaveTime": 1
+			"MaxLeaveTime": 1,
+			"EnvironmentalWeightRange": [1, 10],
+			"TimeWeightRange": [5, 10],
+			"CostWeightRange": [1, 5]
 		},
 		{
 			"Count": 10,
 			"Destination": "Cowell",
 			"Start": "Porter",
-			"MaxLeaveTime": 60
+			"MaxLeaveTime": 60,
+			"EnvironmentalWeightRange": [1, 10],
+			"TimeWeightRange": [5, 10],
+			"CostWeightRange": [1, 5]
 		}
 	]
 }

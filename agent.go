@@ -1,9 +1,10 @@
 package main
 
 type Agent struct {
-	name               string
-	start, destination string
-	leaveTime          int
+	name                              string
+	start, destination                string
+	leaveTime                         int
+	timeWeight, envWeight, econWeight float64
 }
 
 func (a *Agent) Id() string {
