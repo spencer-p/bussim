@@ -30,12 +30,8 @@ func (e *CarEdge) Weight(ta traffic.Agent) float64 {
 		return math.Inf(0)
 	}
 
-	// Directly related to car count and distance
-	// Inversely related to lane count and speed
-	timeCost := (e.Distance * (e.CarCount + 1)) / (e.SpeedLimit * e.LaneCount)
-
 	// Weigh everything together
-	return a.timeWeight*timeCost + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
+	return a.timeWeight*float64(e.Time()) + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
 }
 
 func (e *CarEdge) Time() int {

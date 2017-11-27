@@ -31,13 +31,8 @@ func (e *BusEdge) Weight(ta traffic.Agent) float64 {
 		return math.Inf(0)
 	}
 
-	// The time weight is directly related to # of waiting and distance and
-	// inversely related to the capacity, number of buses, and bus speed
-	timeCost := (e.Distance * (e.Waiting + 1)) / (e.Capacity * e.Speed * e.VehicleCount)
-
 	// Weight each item together
-	// TODO does this make sense?
-	return a.timeWeight*timeCost + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
+	return a.timeWeight*float64(e.Time()) + a.envWeight*e.EnvironmentalCost + a.econWeight*e.Cost
 }
 
 func (e *BusEdge) Time() int {
