@@ -55,6 +55,12 @@ func main() {
 		sim.AddEdge(&e)
 	}
 
+	// Add null routes
+	for _, e := range data.NullRouteInfo {
+		e := e // New reference
+		sim.AddEdge(&e)
+	}
+
 	for groupnum, info := range data.AgentInfo {
 		// The agent info is not actually agents but info to create agents
 		for i := 0; i < info.Count; i++ {

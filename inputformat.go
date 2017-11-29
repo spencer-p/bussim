@@ -1,9 +1,10 @@
 package main
 
 type Input struct {
-	BusRouteInfo []BusEdge
-	CarRouteInfo []CarEdge
-	AgentInfo    []struct {
+	BusRouteInfo  []BusEdge
+	CarRouteInfo  []CarEdge
+	NullRouteInfo []NullEdge
+	AgentInfo     []struct {
 		Start                    string
 		Destination              string
 		Count                    int
