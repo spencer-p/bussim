@@ -1,7 +1,7 @@
 package main
 
 type Agent struct {
-	name                              string
+	name, group                       string
 	start, destination                string
 	leaveTime                         int
 	timeWeight, envWeight, econWeight float64
@@ -9,6 +9,10 @@ type Agent struct {
 
 func (a *Agent) Id() string {
 	return a.name
+}
+
+func (a *Agent) Group() string {
+	return a.group
 }
 
 func (a *Agent) Start() string {

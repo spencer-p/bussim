@@ -66,6 +66,7 @@ func main() {
 		for i := 0; i < info.Count; i++ {
 			sim.AddAgent(&Agent{
 				name:        strconv.Itoa(1000*(groupnum+1) + i),
+				group:       strconv.Itoa(groupnum + 1),
 				start:       info.Start,
 				destination: info.Destination,
 				leaveTime:   rand.Intn(info.MaxLeaveTime),
